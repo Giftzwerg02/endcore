@@ -1,25 +1,26 @@
-type: Melter
-size: 2
+type: GenericCrafter
+name: "Copper-Melter"
+description: "Melts copper down for use in crafting."
+liquidCapacity: 50
+outputLiquid: {
+  liquid: molten-copper
+  amount: 7
+}
+size: 3
 hasPower: true
-hasLiquids: false
-hasItems: true
-craftTime: 120
+hasLiquids: true
+craftTime: 10
 updateEffect: smeltsmoke
 consumes: {
-  power: 0.7
-  items: {
-    items: [
-      copper/2
-    ]
-  }
+  power: 0.6
+  item: copper
 }
 requirements: [
-  lead/60
-  titanium/55
-  silicon/50
-  copper/70
+  lead/50
+  copper/80
+  silicon/20
 ]
 category: crafting
+research: kiln
 idleSound: respawning
 idleSoundVolume: 0.5
-outputLiquid: molten-copper/1
