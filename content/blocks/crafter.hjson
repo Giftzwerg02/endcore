@@ -4,7 +4,6 @@ description: "Crafts something with molten Metal"
 liquidCapacity: 50
 outputItem: {
     item: lead
-    amount: 1
 }
 size: 3
 hasPower: true
