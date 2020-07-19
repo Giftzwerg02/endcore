@@ -1,2 +1,2 @@
-# very-mindustry
+# Endcore
 Yes.
