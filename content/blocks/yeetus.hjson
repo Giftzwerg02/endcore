@@ -1,0 +1,9 @@
+name: much wall
+description: maginot all the way
+type: Wall
+health: 99999999
+size: 6
+requirements: [
+  copper/1
+]
+category: defense
