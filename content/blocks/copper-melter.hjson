@@ -1,0 +1,25 @@
+type: Melter
+size: 2
+hasPower: true
+hasLiquids: false
+hasItems: true
+craftTime: 120
+updateEffect: smeltsmoke
+consumes: {
+  power: 0.7
+  items: {
+    items: [
+      copper/2
+    ]
+  }
+}
+requirements: [
+  lead/60
+  titanium/55
+  silicon/50
+  copper/70
+]
+category: crafting
+idleSound: respawning
+idleSoundVolume: 0.5
+outputLiquid: molten-copper/1
