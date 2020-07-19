@@ -15,7 +15,7 @@ consumes: {
   power: 0.6
   item: copper
   amount: 2
-  molten-copper/0.5
+  liquid: molten-copper
 }
 requirements: [
   lead/50
