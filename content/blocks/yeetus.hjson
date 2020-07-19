@@ -1,8 +1,8 @@
 name: Silver Wall
-description: A wall made of silver. Not particularly useful or interesting.
+description: maginot the shit out of them
 type: Wall
-health: 600
-size: 2
+health: 99999
+size: 6
 requirements: [
   copper/40
 ]
