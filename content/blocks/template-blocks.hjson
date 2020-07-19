@@ -9,14 +9,12 @@ consumes: {
   items: {
     items: [
       silicon/10
-      silver/5
     ]
   }
 }
 category: units
 research: wraith-factory
 requirements: [
-  electrum/40
   silicon/40
   titanium/20
 ]
