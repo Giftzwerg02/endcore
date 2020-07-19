@@ -1,8 +1,8 @@
 name: much wall
 description: maginot all the way
 type: Wall
-health: 99999999
-size: 6
+health: 999999
+size: 3
 requirements: [
   copper/1
 ]
