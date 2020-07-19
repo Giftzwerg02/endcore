@@ -3,8 +3,8 @@ name: "Crafter"
 description: "Crafts something with molten Metal"
 liquidCapacity: 50
 outputItem: {
-  item: lead
-  amount: 1
+    item: lead
+    amount: 1
 }
 size: 3
 hasPower: true
@@ -12,15 +12,16 @@ hasLiquids: true
 craftTime: 10
 updateEffect: smeltsmoke
 consumes: {
-  power: 0.6
-  item: copper
-  amount: 2
-  liquid: molten-copper
+    power: 0.6
+    item: copper
+    amount: 2
+    liquid: water
+    amount: 0.5 
 }
 requirements: [
-  lead/50
-  copper/80
-  silicon/20
+     lead/50
+     copper/80
+     silicon/20
 ]
 category: crafting
 research: kiln
