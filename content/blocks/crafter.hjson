@@ -15,6 +15,7 @@ consumes: {
     item: copper
     amount: 2
     liquid: molten-copper
+    amount: 1
 }
 requirements: [
      lead/50
