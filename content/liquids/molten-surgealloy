@@ -1,0 +1,6 @@
+name: Molten Surge-Alloy
+description: Imagine surge-alloy, but liquid.
+temperature: 0.9
+viscosity: 0.8
+effect: melting
+color: ebe30c

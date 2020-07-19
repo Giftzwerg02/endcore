@@ -1,0 +1,6 @@
+name: Molten Titanium
+description: Imagine titanium, but liquid.
+temperature: 0.9
+viscosity: 0.8
+effect: melting
+color: 7e5eff

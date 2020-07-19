@@ -1,0 +1,6 @@
+name: Molten Lead
+description: Imagine lead, but liquid.
+temperature: 0.9
+viscosity: 0.8
+effect: melting
+color: d7dadb

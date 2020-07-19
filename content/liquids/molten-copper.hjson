@@ -1,0 +1,6 @@
+name: Molten Copper
+description: Imagine copper, but liquid.
+temperature: 0.9
+viscosity: 0.8
+effect: melting
+color: c9711e
