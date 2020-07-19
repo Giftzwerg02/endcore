@@ -1,7 +1,15 @@
-print("Loading subscripts");
+function saveRequire(script) {
+    try {
+        require(script)
+    } catch (EvaluatorException) {
+        print("[WARNING] Couldn't find module with the name [" + script + "]. Continuing without it...")
+    }
+}
+
+print("Loading subscripts")
 
 // Buff all enemies
-require("buff-enemies");
+saveRequire("buff-enemies")
+saveRequire("aofjieowajf")
 
-let scripts = readFolder("scripts");
-print(scripts);
+print("Reading files...")
