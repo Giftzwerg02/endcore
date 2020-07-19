@@ -1,9 +1,10 @@
-name: much wall
-description: maginot all the way
+name: Silver Wall
+description: A wall made of silver. Not particularly useful or interesting.
 type: Wall
-health: 999999
-size: 3
+health: 600
+size: 2
 requirements: [
-  copper/1
+  copper/40
 ]
 category: defense
+research: copper-wall
