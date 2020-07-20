@@ -24,7 +24,6 @@ requirements: [
   lead/50
   thorium/80
   silicon/60
-  silver/50
 ]
 category: crafting
 research: kiln
