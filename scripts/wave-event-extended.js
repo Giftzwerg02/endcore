@@ -1,3 +1,10 @@
 const event = EventType.WaveEvent
 const addEvent = require("helpers/add-event")
-addEvent(event, () => print("WAVE EVENT TRIGGERED"));
+addEvent(event, waveEventExtended)
+
+var roundCount = 0
+
+function waveEventExtended() {
+    roundCount++
+    print("Round-Count: " + roundCount)
+}
