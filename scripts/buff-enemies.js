@@ -1,11 +1,11 @@
-const allBuffs = { healthFactor: 1.5, speedFactor: 1.5 };
+const allBuffs = { healthFactor: 3, speedFactor: 2 };
 
 const specificBuffs = {
-    dagger: { health: 260, speed: 0.3, maxVelocity: 1.5 },
-    crawler: { health: 200, speed: 10, maxVelocity: 5 },
-    eruptor: { health: 1300, speed: 0.2, maxVelocity: 0.5 },
-    lich: { health: 20000, speed: 0.01, maxVelocity: 0.5 },
-    eradicator: { health: 30000, speed: 0.1, maxVelocity: 0.5 },
+    dagger: { health: 500, speed: 0.4, maxVelocity: 1.5 },
+    crawler: { health: 300, speed: 20, maxVelocity: 10 },
+    eruptor: { health: 3500, speed: 0.2, maxVelocity: 0.5 },
+    lich: { health: 35000, speed: 0.01, maxVelocity: 0.5 },
+    eradicator: { health: 100000, speed: 0.1, maxVelocity: 0.5 },
 };
 
 
@@ -36,4 +36,4 @@ function executeBuffs(){
 }
 
 
-executeBuffs()
+executeBuffs() 
