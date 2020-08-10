@@ -14,6 +14,6 @@ print("Loading subscripts")
 
 var helpers = requireAll(["add-event"], {sub: "helpers"})
 
-requireAll(["buff-enemies", "wave-event-extended"])
+var results = requireAll(["buff-enemies", "wave-event-extended", "unitdestroy-event-extended"])
 
 print("Reading files...")

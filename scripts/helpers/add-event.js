@@ -1,7 +1,7 @@
 function addEvent(event, callback) {
     const c = new Cons({ 
-        get: function() { 
-            callback()
+        get: function(e) { 
+            callback(e)
         } 
     })
     Events.on(event, c)
