@@ -20,11 +20,20 @@ units.titan.coinValue = 13
 units.ghoul.coinValue = 14
 units.chaosArray.coinValue = 15
 
+var coins = 0
+var lastMessage = "none"
+
 addEvent(unitDestroyEvent, onUnitDestroy)
 addEvent(playerChatEvent, onPay)
 
-var coins = 0
-var lastMessage = "none"
+addEvent(EventType.PlayerJoin, e => {
+
+    if(Vars.world.getMap().tags.get("coins") == null) {
+        Vars.world.getMap().tags.put("coins", 0)
+    }
+
+    coins = Vars.world.getMap().tags.get("coins")
+})
 
 function getEnemyValue(type) {
     if(units[type])
@@ -33,28 +42,38 @@ function getEnemyValue(type) {
         return 0
 }
 
+// client-sided
 function onUnitDestroy(event) {
     const type = event.unit.type
     const coinsToAdd = getEnemyValue(type)
     coins += coinsToAdd
+    Vars.world.getMap().tags.put("coins", coins)
 }
 
+// server-sided
 function onPay(event) {
     const message = event.message
-    lastMessage = message
-
-    if(message.startsWith("pay "))
-        coins -= (Number(message.split(" ")[1]) || 0)
-
+    const player = event.player
+    print(eval(message))
+    //print("firing event...")
+    //Events.fire(new java.lang.String(message))
 }
 
 ui.addTable(
     "side", 
     "coins", 
     table => {
-        table.label(prov(() => "Current amount of coins: " + coins + "\n"))
+        table.label(prov(() => "Current amount of coins: " + coins))
+        table.row()
         table.label(prov(() => "Last message entered: " + lastMessage))
     }
+)
+
+ui.addButton(
+    "pay",
+    "../sprites/blocks/questchest.png",
+    () => coins -= 10,
+    () => {}
 )
 
 Events.on(EventType.ClientLoadEvent, run(() => {
