@@ -20,7 +20,6 @@
 const ui = this.global.uiLib;
 
 ui.onLoad(() => {
-	// Use one table to reduce setting Draw.scl
 	const table = extend(Table, {
 		draw() {
 			const w = Core.graphics.width, h = Core.graphics.height;

@@ -55,20 +55,20 @@ ui.load = () => {
 	for (var i in events) {
 		events[i]();
 	}
-	// Don't call events multiple times when mods reload
+	
 	ui.loadEvents = [];
 
 	var area;
 	for (var i in ui.areas) {
 		area = ui.areas[i];
-		// Sort the cells by name
+		
 		area.table.cells.sortComparing(func(cell => {
 			const name = cell.get().name;
 			return name[0] == '$' ? Core.bundle.get(name.substr(1)) : name;
 		}));
 
 		area.post(area.table);
-		// Add the UI elements to the HUD by default
+		
 		if (!area.customGroup) {
 			Vars.ui.hudGroup.addChild(area.table);
 		}
@@ -76,11 +76,11 @@ ui.load = () => {
 };
 
 ui.getIcon = (icon) => {
-	// () => Icon.leftSmall
+	
 	if (typeof(icon) == "function") {
 		icon = icon();
 	}
-	// "admin" / "error"
+	
 	if (typeof(icon) == "string") {
 		try {
 			icon = Icon[icon]
@@ -88,15 +88,15 @@ ui.getIcon = (icon) => {
 			icon = Core.atlas.find(icon);
 		}
 	}
-	// Blocks.duo
+	
 	if (icon instanceof UnlockableContent) {
 		icon = icon.icon(Cicon.full);
 	}
-	// Core.atlas.find("error")
+	
 	if (icon instanceof TextureRegion) {
 		icon = new TextureRegionDrawable(icon);
 	}
-	// Hopefully its a Drawable by now
+	
 	return icon;
 };
 
@@ -129,7 +129,7 @@ ui.addButton = (name, icon, clicked, user) => {
 			cell.name(name);
 			const button = cell.get();
 			button.clicked(run(() => {
-				/* UI crashes are only printed to stdout, not a crash log */
+				
 				try {
 					clicked(button);
 				} catch (e) {
@@ -177,7 +177,7 @@ ui.showError = error => {
 ui.mobileAreaInput = (area, accepted, params) => {
 	if (!Vars.mobile) return;
 
-	/* Constant params */
+	
 	if (typeof(params) != "function") {
 		params = () => params;
 	}
@@ -189,7 +189,7 @@ ui.mobileAreaInput = (area, accepted, params) => {
 			const input = new Input.TextInput;
 			input.multiline = true;
 			input.accepted = cons(text => {
-				// TextArea had its carriage return and linefeed keys switched
+				
 				area.text = text.replace(/\n/g, "\r");
 				accepted(text);
 			});
