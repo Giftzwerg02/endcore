@@ -23,23 +23,15 @@ if (this.global.uiLib) {
 }
 
 const ui = {
-	// Functions to be called when atlas is ready
 	loadEvents: [],
-	// Functions to be called when the mouse is clicked
 	clickEvents: [],
 	areas: {},
-	// Custom drawing functions
 	effects: [],
 	emptyRun: run(() => {}),
-	// Dialog to show any runtime errors
 	errors: null,
-	// if the loadEvents have started processing
 	loaded: false
 };
 
-/** UTILITY FUNCTIONS **/
-
-/* Run a function when the client loads, or now if it already has. */
 ui.onLoad = (func) => {
 	if (ui.loaded) {
 		func();
@@ -48,7 +40,6 @@ ui.onLoad = (func) => {
 	}
 }
 
-/* Run events to add UI and stuff when assets are ready. */
 ui.load = () => {
 	var table;
 	for (var i in ui.areas) {
@@ -109,29 +100,10 @@ ui.getIcon = (icon) => {
 	return icon;
 };
 
-/* Area is an object with these functions:
-	void init(Table):
-		Called before any loadEvents.
-		Argument is a shortcut for this.table.
-	void post(Table):
-		Called after all loadEvents but before the area is added to the HUD.
-		Argument is a shortcut for this.table.
-	void added(Table): (Optional)
-		Called when a new table is added by ui.addTable. */
 ui.addArea = (name, area) => {
 	ui.areas[name] = area;
 };
 
-/** UI FUNCTIONS **/
-
-/* Add a table to an area
-	String area:
-		Index to ui.areas that serves as the root.
-		See areas.js.
-	String name:
-		Name of the table, used for sorting.
-	void user(Table):
-		Called when the table is created. */
 ui.addTable = (area, name, user) => {
 	ui.onLoad(() => {
 		try {
@@ -149,16 +121,6 @@ ui.addTable = (area, name, user) => {
 	});
 };
 
-/* Add a button to the top left.
-	String name:
-		Name of the button, used for sorting.
-	Drawable icon:
-		The icon of the button.
-		Use Icon.xxx, a TextureRegion, UnlockableContent or String.
-	void clicked(ImageButton):
-		Called when the button is clicked.
-	void user(Cell): (Optional)
-		Called when the button is created. */
 ui.addButton = (name, icon, clicked, user) => {
 	ui.onLoad(() => {
 		try {
@@ -181,22 +143,12 @@ ui.addButton = (name, icon, clicked, user) => {
 	});
 };
 
-/* Shortcut for adding an ImageTextButton to the menu area */
 ui.addMenuButton = (name, icon, clicked, user) => {
 	ui.addTable("menu", name, t => {
 		t.addImageTextButton(name, ui.getIcon(icon), run(clicked)).height(48).size(210, 84);
 	});
 };
 
-/* Add a custom drawing functiom.
-	function(int w, int h) effect:
-		Called every frame in-game like a block's draw().
-		Coordinates are in screen space, not world space.
-		Textures are drawn at block scale.
-		For convenience, w and h are the screen's width and height.
-	boolean visible():
-		Whether to draw the effect or not.
-		By default only draws when in-game. */
 ui.addEffect = (effect, visible) => {
 	ui.effects.push({
 		draw: effect,
@@ -206,18 +158,6 @@ ui.addEffect = (effect, visible) => {
 	});
 };
 
-/** EXTRA UTILITIES */
-
-/* Call the handler when the mouse is clicked somewhere.
-	void handler(Vec2 pos, Tile tile, boolean hasMouse):
-		Called once when a mouse click is received.
-		Tile is null when not playing or out of map.
-		If the player clicked a UI element and !world, hasMouse is true.
-	boolean world = false:
-		Whether to ignore clicks that are over UI elements.
-
-	Returns the index to ui.clickEvents should you need to cancel it,
-	 use delete ui.clickEvents[index] if so. */
 ui.click = (handler, world) => {
 	ui.clickEvents.push({
 		handler: handler,
@@ -226,8 +166,6 @@ ui.click = (handler, world) => {
 	return ui.clickEvents.length - 1;
 }
 
-/* Show an error dialog.
-   String error: message to show in the center of the dialog. */
 ui.showError = error => {
 	Log.err(error);
 	Core.app.post(run(() => {
@@ -236,19 +174,6 @@ ui.showError = error => {
 	}));
 };
 
-/* TextAreas can't get newlines on Android, use the native text input.
-	Does nothing on desktop.
-	Not very useful for TextFields.
-
-	TextField area:
-		Field to get input for.
-	void accepted(String text):
-		Ran when the input is accepted.
-	Object params / Object params():
-		If a function, uses the output of that function.
-		Fields of Input$TextInput that override the defaults of:
-			multiline: true,
-			accepted: set area.text and run accepted */
 ui.mobileAreaInput = (area, accepted, params) => {
 	if (!Vars.mobile) return;
 

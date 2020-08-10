@@ -44,7 +44,6 @@ ui.addArea("buttons", {
 	}
 });
 
-// Under the FPS counter.
 ui.addArea("top", {
 	init(top) {
 		top.top().left().marginTop(47.2 + 54).marginLeft(47.2 * 5 + 16);
@@ -72,7 +71,7 @@ ui.addArea("top", {
 
 ui.addArea("side", {
 	init(side) {
-		const mtop = 80;
+		const mtop = 100;
 		side.top().left().marginTop(mtop).marginLeft(8);
 		side.defaults().top().left().padBottom(8);
 	},
@@ -87,7 +86,7 @@ ui.addArea("side", {
 	first: true,
 	shown: false
 });
-// Logical alias
+
 ui.areas.left = ui.areas.side;
 
 ui.addArea("bottom", {
@@ -97,7 +96,6 @@ ui.addArea("bottom", {
 	post() {}
 });
 
-/* Custom drawing functions */
 ui.addArea("effects", {
 	init() {},
 	post(effects) {
@@ -110,7 +108,6 @@ ui.addArea("effects", {
 	customGroup: true
 });
 
-/* Button to open a dialog only visible from the menu screen */
 ui.addArea("menu", {
 	init(table) {
 		this.dialog = new FloatingDialog("$ui.more");
