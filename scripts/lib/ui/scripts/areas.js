@@ -1,27 +1,7 @@
-/*
-	Copyright (c) DeltaNedas 2020
-
-	This program is free software: you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
-
-	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/
-
 (() => {
 
 const ui = this.global.uiLib;
 
-/* Create all the areas */
-
-// To the right of the wave info / mobile buttons
 ui.addArea("buttons", {
 	init(buttons) {
 		// 5 buttons in vanilla mobile, same width as the wave fragment
@@ -44,7 +24,6 @@ ui.addArea("buttons", {
 	}
 });
 
-// Under the FPS counter.
 ui.addArea("top", {
 	init(top) {
 		top.top().left().marginTop(47.2 + 54).marginLeft(47.2 * 5 + 16);
@@ -87,7 +66,7 @@ ui.addArea("side", {
 	first: true,
 	shown: false
 });
-// Logical alias
+
 ui.areas.left = ui.areas.side;
 
 ui.addArea("bottom", {
@@ -97,7 +76,6 @@ ui.addArea("bottom", {
 	post() {}
 });
 
-/* Custom drawing functions */
 ui.addArea("effects", {
 	init() {},
 	post(effects) {
@@ -110,7 +88,6 @@ ui.addArea("effects", {
 	customGroup: true
 });
 
-/* Button to open a dialog only visible from the menu screen */
 ui.addArea("menu", {
 	init(table) {
 		this.dialog = new FloatingDialog("$ui.more");
