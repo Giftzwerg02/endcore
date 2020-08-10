@@ -27,12 +27,11 @@ addEvent(unitDestroyEvent, onUnitDestroy)
 addEvent(playerChatEvent, onPay)
 
 addEvent(EventType.PlayerJoin, e => {
-
     if(Vars.world.getMap().tags.get("coins") == null) {
-        Vars.world.getMap().tags.put("coins", 0)
+        Vars.world.getMap().tags.put("coins", "5")
     }
 
-    coins = Vars.world.getMap().tags.get("coins")
+    coins = Number(Vars.world.getMap().tags.get("coins"))
 })
 
 function getEnemyValue(type) {
@@ -47,7 +46,7 @@ function onUnitDestroy(event) {
     const type = event.unit.type
     const coinsToAdd = getEnemyValue(type)
     coins += coinsToAdd
-    Vars.world.getMap().tags.put("coins", coins)
+    Vars.world.getMap().tags.put("coins", coins + "")
 }
 
 // server-sided
