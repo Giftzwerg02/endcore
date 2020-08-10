@@ -35,7 +35,7 @@ function unitDestroyEventExtended(event) {
     coins += unitValues[type]
 }
 
-ui.addTable("side", "killcount", client => client.label(prov(() => "Current amount of coins: " + coins)))
+ui.addTable("side", "coins", client => client.label(prov(() => "Current amount of coins: " + coins)))
 
 Events.on(EventType.ClientLoadEvent, run(() => {
 	ui.load()
