@@ -51,7 +51,7 @@ ui.addArea("top", {
 
 ui.addArea("side", {
 	init(side) {
-		const mtop = 80;
+		const mtop = 100;
 		side.top().left().marginTop(mtop).marginLeft(8);
 		side.defaults().top().left().padBottom(8);
 	},
